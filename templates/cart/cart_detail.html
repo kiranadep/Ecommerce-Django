@@ -1,0 +1,99 @@
+{% extends 'master.html' %}
+
+{% load cart_tag %}
+
+
+{% block body %}
+
+<section id="cart_items">
+    <div class="container">
+        <div class="breadcrumbs">
+            <ol class="breadcrumb">
+              <li><a href="{% url 'index' %}">Home</a></li>
+              <li class="active">Shopping Cart</li>
+            </ol>
+        </div>
+        <div class="table-responsive cart_info">
+            <table class="table table-condensed">
+                <thead>
+                    <tr class="cart_menu">
+                        <td class="image">Item</td>
+                        <td class="description"></td>
+                        <td class="price">Price</td>
+                        <td class="quantity">Quantity</td>
+                        <td class="total">Total</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key,value in request.session.cart.items %}
+                    <tr>
+                        <td class="cart_product">
+                            <a href=""><img src="{{value.image}}" alt=""></a>
+                        </td>
+                        <td class="cart_description">
+                            <h4><a href="">{{value.name}}</a></h4>
+                        </td>
+                        <td class="cart_price">
+                            <p>₹{{value.price}}</p>
+                        </td>
+                        <td class="cart_quantity">
+                            <div class="cart_quantity_button">
+                                <a class="cart_quantity_up" href="{% url 'item_increment' value.product_id %}"> + </a>
+                                <input class="cart_quantity_input" type="text" name="quantity" value="{{value.quantity}}" autocomplete="off" size="2">
+                                <a class="cart_quantity_down" href="{% url 'item_decrement' value.product_id %}"> - </a>
+                            </div>
+                        </td>
+                        <td class="cart_total">
+                            <p class="cart_total_price">₹ {{value.price|multiply:value.quantity}}</p>
+                        </td>
+                        <td class="cart_delete">
+                            <a class="cart_quantity_delete" href="{% url 'item_clear' key %}"><i class="fa fa-times"></i></a>
+                        </td>
+                    {% comment %} </tr>
+                    <button type="button" class="btn btn-primary" style="float:right"><a href="{% url 'cart_clear' %}">clear cart</a></button>
+                    <br> {% endcomment %}
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <hr>
+                        <h4>Sub Total:</h4>
+                    </td>
+                    <td></td>
+                    <td>
+                        <hr>
+                        <h3>{{cart_total_amount}}</h3>
+                    </td>
+                </tfoot>
+            </table>
+          </div>
+          <div class="modal-footer">
+
+          <form method="post" action="/checkout/">
+            {% csrf_token %}
+          <div class="form-floating mb-3">
+            <label for="recipient-name" class = 'col-form-label' style="float:left">Phone :</label>
+            <input type="text" name = "phone" class="form-control" id="recipient-name" placeholder="Enter Number">
+          </div>
+          <br>
+          <div class="form-floating">
+            <label for="message-text" class = 'col-form-label' style="float:left">Address :</label>
+           <textarea class ="form-control" name="address" id="message-text" placeholder="Enter Address"></textarea>
+          </div>
+          <br>
+          <div class="form-floating">
+            <label for="message-text" class = 'col-form-label' style="float:left">PinCode :</label>
+            <input type="text" name = "pincode" class="form-control" id="recipient-name" placeholder="Enter Pincode">
+
+          </div>
+          <button type="submit" class="btn btn-primary" style="float:right">CheckOut</button>
+        </div>
+        </form>
+        </div>
+</section> <!--/#cart_items-->
+
+
+{% endblock %}
