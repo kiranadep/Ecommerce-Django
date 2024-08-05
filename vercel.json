@@ -8,17 +8,9 @@
         "maxLambdaSize": "50mb",
         "runtime":"python3.10"
       }
-    },
-    {
-      "src": "staticfiles/**",
-      "use": "@vercel/static"
     }
   ],
   "routes": [
-    {
-      "src": "/static/(.*)",
-      "dest": "/staticfiles/$1"
-    },
     {
       "src": "/(.*)",
       "dest": "E_shop/wsgi.py"
