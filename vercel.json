@@ -8,13 +8,6 @@
         "maxLambdaSize": "15mb",
         "runtime": "python3.10"
       }
-    },
-    {
-      "src": "build_files.sh",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "staticfiles"
-      }
     }
   ],
   "routes": [
@@ -26,5 +19,6 @@
       "src": "/(.*)",
       "dest": "E_shop/wsgi.py"
     }
-  ]
+  ],
+  "buildCommand": "pip install -r requirements.txt && python manage.py collectstatic --noinput"
 }
