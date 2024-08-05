@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-&y!du2#4((u_0#q0%a!w-96@8j&2hvxf053l8!=(e-zjltsr(d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['ecommerce-django-eight.vercel.app', 'localhost', '127.0.0.1']
 
 
 # Application definition
