@@ -1,0 +1,2 @@
+1. setup the smtp server in E_shop/settings.py
+2. reset the admin pannel of the Django
