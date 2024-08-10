@@ -4,9 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
 import datetime
-# Create your models here.
-# Username : admin
-# pass : nani8985
+
 
 class Category(models.Model):
     name = models.CharField(max_length=150)
