@@ -1,15 +1,1 @@
-# Ecommerce-Django
-﻿asgiref==3.8.1
-beautifulsoup4==4.12.3
-django==4.2.14
-django-bootstrap-v5==1.0.11
-django-bootstrap5==24.2
-django-shopping-cart==0.1
-pillow==10.4.0
-soupsieve==2.5
-sqlparse==0.5.0
-typing_extensions==4.12.2
-tzdata==2024.1
-uv==0.2.26
-gunicorn>=20.1.0
-psycopg2-binary>=2.9.0
+# Ecommerce-Website-Using-Django
